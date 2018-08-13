@@ -1,0 +1,8 @@
+cf unmap-route SRS_HoopRewardService app.dev.phx.pcf.syfbank.com --hostname srs_hooprewardservice-qa
+cf login -a login_url
+cf push HoopRewards -f manifest-dev.yml
+cf push  ChevronService -n ChevronService -i 1 -m 512m -p H:\maven_repo\com\syf\SpringStarter\ChevronEnrollService\0.0.1-SNAPSHOT\ChevronEnrollService-0.0.1-SNAPSHOT.war
+cf push test_app -n test_app -i 1 -m 512m -p H:\maven_repo\502287748\.m2\repo16\com\com.syf.rrs.controller\rrs-service-balanceInquiry\com.syf.rrs.controller-rrs-service-balanceInquiry.jar H:\maven_repo\502287748\.m2\repo16\com\syf\SpringStarter\HoopRewardService\0.0.1-SNAPSHOT\HoopRewardService-0.0.1-SNAPSHOT.war
+cf push GetCouponService_heap_load -n GetCouponService_heap_load -i 1 -m 512m -p H:\maven_repo\502287748\.m2\repo16\com\syf\SpringStarter\GetCouponService\0.0.1-SNAPSHOT\GetCouponService-0.0.1-SNAPSHOT.war
+cf create-service p-config-server standard Hoop-config-server -c H:/config.json
+cf push HoopRewards -f manifest-dev.yml
